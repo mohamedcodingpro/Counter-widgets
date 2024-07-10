@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.3/cdn.min.js" defer></script>
+    <style>
+        body {
+            background-color: whitesmoke;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .counter {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        button:active {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(1px);
+        }
+        .reset button {
+            margin-top: 10px; /* Adjust the margin-top to add space */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" x-data="counter()">
+        <h1>Counter with Javascript</h1>
+        <div class="counter" x-text="count"></div>
+        <button @click="decrement">Decrement</button>
+        <button @click="increment">Increment</button>
+        <div class="reset"><button @click="reset">Reset</button></div>
+    </div>
+
+    <script>
+        function counter(maxValue = 140) {
+            return {
+                count: 0,
+                maxValue: maxValue,
+                increment() {
+                    if (this.count < this.maxValue) {
+                        this.count++;
+                    }
+                },
+                decrement() {
+                    if (this.count > 0) {
+                        this.count--;
+                    }
+                },
+                reset() {
+                    this.count = 0;
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>

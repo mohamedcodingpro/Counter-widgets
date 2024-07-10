@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Widget with AlpineJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .counter {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn:active {
+            background-color: #0056b3;
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" x-data="counterWidget()">
+        <h1>AlpineJs Counter</h1>
+        <div class="counter" x-text="count"></div>
+        <div>
+            <button class="btn" @click="increment()">+</button>
+            <button class="btn" @click="decrement()">-</button>
+            <button class="btn" @click="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        function counterWidget() {
+            return {
+                count: 0,
+                max: 10, // Set your maximum value here
+                increment() {
+                    if (this.count < this.max) {
+                        this.count++;
+                    }
+                },
+                decrement() {
+                    if (this.count > 0) {
+                        this.count--;
+                    }
+                },
+                reset() {
+                    this.count = 0;
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>
